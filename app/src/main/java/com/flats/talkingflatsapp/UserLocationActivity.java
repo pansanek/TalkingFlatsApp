@@ -141,5 +141,6 @@ public class UserLocationActivity extends Activity implements UserLocationObject
 
     public void OnClickEndDay(View view) {
         Toast.makeText(getApplicationContext(), "Окончание рабочего дня", Toast.LENGTH_LONG).show();
+        this.finish();
     }
 }
