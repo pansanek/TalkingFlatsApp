@@ -45,4 +45,9 @@
     <string name="package_name">com.yandex.mapkitdemo</string>
 
     <string name="workday_start">Начать рабочий день?</string>
+
+
+    <string name="username" >Имя</string>
+    <string name="password" >Пароль</string>
+    <string name="login">Войти</string>
 </resources>
