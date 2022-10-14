@@ -2,9 +2,15 @@ package com.flats.talkingflatsapp;
 
 import android.Manifest;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import androidx.core.content.res.ResourcesCompat;
 
 import com.yandex.mapkit.MapKit;
 import com.yandex.mapkit.MapKitFactory;
@@ -20,6 +26,11 @@ import com.yandex.mapkit.user_location.UserLocationLayer;
 import com.yandex.mapkit.user_location.UserLocationObjectListener;
 import com.yandex.mapkit.user_location.UserLocationView;
 import com.yandex.runtime.image.ImageProvider;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.Random;
 
 public class UserLocationActivity extends Activity implements UserLocationObjectListener {
 
@@ -44,6 +55,21 @@ public class UserLocationActivity extends Activity implements UserLocationObject
         userLocationLayer.setHeadingEnabled(true);
 
         userLocationLayer.setObjectListener(this);
+
+
+
+        Random rnd = new Random();
+        double raw_latitude = (55.721 + rnd.nextDouble() * 0.3);
+        double raw_longitude = (37.603 + rnd.nextDouble() * 0.3);
+        MathContext context = new MathContext(8, RoundingMode.HALF_UP);
+        BigDecimal rounded_latitude = new BigDecimal(raw_latitude, context);
+        BigDecimal rounded_longitude = new BigDecimal(raw_longitude, context);
+        double latitude = Double.parseDouble(String.valueOf(rounded_latitude));
+        double longitude = Double.parseDouble(String.valueOf(rounded_longitude));
+
+        Point newpoint = new Point(latitude, longitude);
+        drawLocationMark(newpoint, mapView);
+
     }
 
     @Override
@@ -98,5 +124,16 @@ public class UserLocationActivity extends Activity implements UserLocationObject
 
     @Override
     public void onObjectUpdated(UserLocationView view, ObjectEvent event) {
+    }
+
+    // TODO: Map mark correct shift
+    private void drawLocationMark(Point point, MapView mapview) {
+        mapview.getMap().getMapObjects().addPlacemark(new Point(point.getLatitude(),
+                point.getLongitude()), ImageProvider.fromBitmap(getBitmap()));
+    }
+
+    public Bitmap getBitmap() {
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_map_marker, null);
+        return com.flats.talkingflatsapp.BitmapUtils.drawableToBitmap(drawable);
     }
 }
