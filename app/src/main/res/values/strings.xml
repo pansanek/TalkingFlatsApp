@@ -43,4 +43,6 @@
     <string name="unknown_error_message">Unknown error</string>
 
     <string name="package_name">com.yandex.mapkitdemo</string>
+
+    <string name="workday_start">Начать рабочий день?</string>
 </resources>

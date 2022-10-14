@@ -9,6 +9,8 @@ import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.core.content.res.ResourcesCompat;
 
@@ -135,5 +137,9 @@ public class UserLocationActivity extends Activity implements UserLocationObject
     public Bitmap getBitmap() {
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_map_marker, null);
         return com.flats.talkingflatsapp.BitmapUtils.drawableToBitmap(drawable);
+    }
+
+    public void OnClickEndDay(View view) {
+        Toast.makeText(getApplicationContext(), "Окончание рабочего дня", Toast.LENGTH_LONG).show();
     }
 }
