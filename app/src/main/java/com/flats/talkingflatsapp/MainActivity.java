@@ -19,15 +19,22 @@ import com.gun0912.tedpermission.TedPermission;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
+
 
     }
 
     public void OnClickStartDay(View view) {
+        progressBar.setVisibility(View.VISIBLE);
         Thread thread = new Thread(){
             @Override
             public void run() {
@@ -45,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                         public void onPermissionGranted() {
                             Intent intent = new Intent(MainActivity.this, UserLocationActivity.class);
                             startActivity(intent);
+                            //progressBar.setVisibility(View.INVISIBLE);
+                            finish();
                         }
 
                         @Override
