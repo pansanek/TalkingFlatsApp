@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity {
     public static final String APP_PREFERENCES_PASSWORD = "Password";
     TextInputEditText editNickName;
     TextInputEditText editPassword;
-    Boolean log;
+    Boolean log = false;
     List<Driver> drivers;
 
     @Override
@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
                 break;
             }
         }
-        if(!log) Toast.makeText(Login.this, "Такого пользователя нет",Toast.LENGTH_SHORT).show();
+        if(log == false) Toast.makeText(getApplicationContext(), "Такого пользователя нет",Toast.LENGTH_SHORT).show();
 
 
     }
