@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -31,9 +33,11 @@ import com.yandex.mapkit.user_location.UserLocationObjectListener;
 import com.yandex.mapkit.user_location.UserLocationView;
 import com.yandex.runtime.image.ImageProvider;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.List;
 import java.util.Random;
 
 public class UserLocationActivity extends Activity implements UserLocationObjectListener {
@@ -69,9 +73,11 @@ public class UserLocationActivity extends Activity implements UserLocationObject
         double latitude = Double.parseDouble(String.valueOf(rounded_latitude));
         double longitude = Double.parseDouble(String.valueOf(rounded_longitude));
 
-        Point newpoint = new Point(latitude, longitude);
-        drawLocationMark(newpoint, mapView);
-
+        //Point newpoint = new Point(latitude, longitude);
+        //drawLocationMark(newpoint, mapView);
+        getLocationFromAddress("2-й Полевой переулок, 4");
+        getLocationFromAddress("улица Сокольническая Слободка");
+        getLocationFromAddress("улица Барболина");
     }
 
 
@@ -143,5 +149,31 @@ public class UserLocationActivity extends Activity implements UserLocationObject
     public void OnClickExit(View view) {
         android.os.Process.killProcess(android.os.Process.myPid());
 
+    }
+
+    public void getLocationFromAddress(String strAddress)
+    {
+        //Create coder with Activity context - this
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+
+        try {
+            //Get latLng from String
+            address = coder.getFromLocationName(strAddress,5);
+
+            //check for null
+            if (address == null) {
+                return;
+            }
+
+            //Lets take first possibility from the all possibilities.
+            Address location=address.get(0);
+            Point point = new Point(location.getLatitude(), location.getLongitude());
+            drawLocationMark(point, mapView);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
