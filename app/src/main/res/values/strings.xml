@@ -46,8 +46,18 @@
 
     <string name="workday_start">Начать рабочий день?</string>
 
-
     <string name="username" >Имя</string>
+
     <string name="password" >Пароль</string>
+
     <string name="login">Войти</string>
+
+    <string name="taskView">Задача: </string>
+
+    <string name="timeOfWorkString">Примерное время работы: </string>
+
+    <string name="endDayButton">Закончить рабочий день</string>
+
+    <string name="exitButton">Выйти из аккаунта</string>
+
 </resources>
