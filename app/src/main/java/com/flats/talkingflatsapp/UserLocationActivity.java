@@ -2,6 +2,7 @@ package com.flats.talkingflatsapp;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -59,10 +60,9 @@ public class UserLocationActivity extends Activity implements UserLocationObject
         userLocationLayer.setObjectListener(this);
 
 
-
         Random rnd = new Random();
-        double raw_latitude = (55.721 + rnd.nextDouble() * 0.3);
-        double raw_longitude = (37.603 + rnd.nextDouble() * 0.3);
+        double raw_latitude = (55.7896 + rnd.nextDouble() * 0.03);
+        double raw_longitude = (37.6796 + rnd.nextDouble() * 0.03);
         MathContext context = new MathContext(8, RoundingMode.HALF_UP);
         BigDecimal rounded_latitude = new BigDecimal(raw_latitude, context);
         BigDecimal rounded_longitude = new BigDecimal(raw_longitude, context);
@@ -141,6 +141,8 @@ public class UserLocationActivity extends Activity implements UserLocationObject
 
     public void OnClickEndDay(View view) {
         Toast.makeText(getApplicationContext(), "Окончание рабочего дня", Toast.LENGTH_LONG).show();
+        SharedPreferences preferences = getSharedPreferences("PrefStartDay", 0);
+        preferences.edit().clear().commit();
         this.finish();
     }
 }

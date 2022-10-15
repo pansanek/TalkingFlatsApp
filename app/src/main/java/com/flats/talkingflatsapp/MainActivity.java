@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     SharedPreferences PrefStartDay;
     SharedPreferences.Editor editor;
-    public static final String APP_PREFERENCES = "mysettings";
+    public static final String APP_PREFERENCES = "PrefStartDay";
     public static final String APP_PREFERENCES_DAY = "START";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,12 +96,14 @@ public class MainActivity extends AppCompatActivity {
             finish();
         } else {
             // If sign in fails, display a message to the user.
-            Toast.makeText(getApplicationContext(), "Авторизация не прошла",
+            Toast.makeText(getApplicationContext(), "Рабочий день не начат",
                     Toast.LENGTH_SHORT).show();
         }
     }
 
     public void OnClickDelogin(View view) {
-        PrefStartDay.edit().clear().commit();
+        SharedPreferences preferences = getSharedPreferences("mysettings", 0);
+        preferences.edit().clear().commit();
+        this.finish();
     }
 }
