@@ -2,13 +2,21 @@ package com.flats.talkingflatsapp.order;
 
 public class Order {
 
-    String timeView, typeCar, typeOfWorkView, timeOfWork;
+    String timeView, typeCar,  timeOfWork,address;
 
-    public Order(String timeView, String typeCar, String typeOfWorkView, String timeOfWork) {
+    public Order(String timeView, String typeCar, String timeOfWork,String address) {
         this.timeView = timeView;
         this.typeCar = typeCar;
-        this.typeOfWorkView = typeOfWorkView;
         this.timeOfWork = timeOfWork;
+        this.address  = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTimeView() {
@@ -27,13 +35,6 @@ public class Order {
         this.typeCar = typeCar;
     }
 
-    public String getTypeOfWorkView() {
-        return typeOfWorkView;
-    }
-
-    public void setTypeOfWorkView(String typeOfWorkView) {
-        this.typeOfWorkView = typeOfWorkView;
-    }
 
     public String getTimeOfWork() {
         return timeOfWork;

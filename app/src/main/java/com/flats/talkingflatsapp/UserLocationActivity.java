@@ -62,22 +62,13 @@ public class UserLocationActivity extends Activity implements UserLocationObject
         userLocationLayer.setHeadingEnabled(true);
 
         userLocationLayer.setObjectListener(this);
+        Bundle arguments = getIntent().getExtras();
+        String address = arguments.get("hello").toString();
 
 
-        Random rnd = new Random();
-        double raw_latitude = (55.7896 + rnd.nextDouble() * 0.03);
-        double raw_longitude = (37.6796 + rnd.nextDouble() * 0.03);
-        MathContext context = new MathContext(8, RoundingMode.HALF_UP);
-        BigDecimal rounded_latitude = new BigDecimal(raw_latitude, context);
-        BigDecimal rounded_longitude = new BigDecimal(raw_longitude, context);
-        double latitude = Double.parseDouble(String.valueOf(rounded_latitude));
-        double longitude = Double.parseDouble(String.valueOf(rounded_longitude));
-
-        //Point newpoint = new Point(latitude, longitude);
-        //drawLocationMark(newpoint, mapView);
-        getLocationFromAddress("2-й Полевой переулок, 4");
-        getLocationFromAddress("улица Сокольническая Слободка");
-        getLocationFromAddress("улица Барболина");
+        getLocationFromAddress(address);
+        //getLocationFromAddress("улица Сокольническая Слободка");
+        //getLocationFromAddress("улица Барболина");
     }
 
 

@@ -20,17 +20,18 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="16:30"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/taskView2"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
-            android:id="@+id/typeOfWorkView"
+            android:id="@+id/Address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Перетащить 20 тонн говна"
+            android:text="Дом пупкина"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/taskView"
@@ -41,21 +42,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Задача:"
-            app:layout_constraintStart_toStartOf="@+id/timeView"
-            app:layout_constraintTop_toBottomOf="@+id/timeView" />
+            android:text="Адрес:"
+            app:layout_constraintStart_toStartOf="@+id/taskView2"
+            app:layout_constraintTop_toBottomOf="@+id/taskView3" />
 
+        <TextView
+            android:id="@+id/taskView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Время:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/taskView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Номер машины:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/taskView2" />
 
         <TextView
             android:id="@+id/typeOfCar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:text="Трактор"
-            android:textSize="20dp"
-            app:layout_constraintStart_toEndOf="@+id/timeView"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@+id/taskView3"
+            app:layout_constraintTop_toBottomOf="@+id/timeView" />
 
         <TextView
             android:id="@+id/timeOfWorkString"
@@ -73,11 +93,12 @@
             android:layout_width="176dp"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="~ 30 минут"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/timeOfWorkString"
-            app:layout_constraintTop_toBottomOf="@+id/typeOfWorkView"
+            app:layout_constraintTop_toBottomOf="@+id/Address"
             app:layout_constraintVertical_bias="0.941" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
