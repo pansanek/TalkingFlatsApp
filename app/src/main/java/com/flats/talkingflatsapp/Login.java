@@ -35,8 +35,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void OnClickLogin(View view) {
-
-
         editor.putString(APP_PREFERENCES_NAME, editNickName.getText().toString());
         editor.putString(APP_PREFERENCES_PASSWORD, editPassword.getText().toString());
         editor.apply();

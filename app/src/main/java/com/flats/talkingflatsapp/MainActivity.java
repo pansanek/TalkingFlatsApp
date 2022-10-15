@@ -2,6 +2,8 @@ package com.flats.talkingflatsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,20 +23,25 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
-
+    SharedPreferences PrefStartDay;
+    SharedPreferences.Editor editor;
+    public static final String APP_PREFERENCES = "mysettings";
+    public static final String APP_PREFERENCES_DAY = "START";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
+        PrefStartDay = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
-
+        editor = PrefStartDay.edit();
 
     }
 
     public void OnClickStartDay(View view) {
         progressBar.setVisibility(View.VISIBLE);
+        editor.putString(APP_PREFERENCES_DAY, "START");
+        editor.apply();
         Thread thread = new Thread(){
             @Override
             public void run() {
@@ -75,5 +82,26 @@ public class MainActivity extends AppCompatActivity {
 
         thread.start();
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        PrefStartDay = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        PrefStartDay = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        if (PrefStartDay != null && !PrefStartDay.getString(APP_PREFERENCES_DAY,"").equals("")) {
+            Intent intent = new Intent(MainActivity.this, UserLocationActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            // If sign in fails, display a message to the user.
+            Toast.makeText(getApplicationContext(), "Авторизация не прошла",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void OnClickDelogin(View view) {
+        PrefStartDay.edit().clear().commit();
     }
 }
