@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     PermissionListener permissionlistener = new PermissionListener() {
                         @Override
                         public void onPermissionGranted() {
-                            Intent intent = new Intent(MainActivity.this, UserLocationActivity.class);
+                            Intent intent = new Intent(MainActivity.this, OrderActivity.class);
                             startActivity(intent);
                             //progressBar.setVisibility(View.INVISIBLE);
                             finish();
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         PrefStartDay = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         PrefStartDay = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (PrefStartDay != null && !PrefStartDay.getString(APP_PREFERENCES_DAY,"").equals("")) {
-            Intent intent = new Intent(MainActivity.this, UserLocationActivity.class);
+            Intent intent = new Intent(MainActivity.this, OrderActivity.class);
             startActivity(intent);
             finish();
         } else {
@@ -101,9 +101,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void OnClickDelogin(View view) {
-        SharedPreferences preferences = getSharedPreferences("mysettings", 0);
-        preferences.edit().clear().commit();
-        this.finish();
-    }
+
 }

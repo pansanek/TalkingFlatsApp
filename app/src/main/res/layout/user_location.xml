@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/purple_200"
         android:clickable="true"
-        android:onClick="OnClickEndDay"
+        android:onClick="OnClickExit"
         app:layout_constraintBottom_toBottomOf="@+id/mapview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"

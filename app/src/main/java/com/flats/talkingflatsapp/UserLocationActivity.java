@@ -2,6 +2,7 @@ package com.flats.talkingflatsapp;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,7 +37,6 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 public class UserLocationActivity extends Activity implements UserLocationObjectListener {
-
     private final String MAPKIT_API_KEY = "cb7bdd48-6aa7-4812-ba6e-72902c458a81";
 
     private MapView mapView;
@@ -73,6 +73,7 @@ public class UserLocationActivity extends Activity implements UserLocationObject
         drawLocationMark(newpoint, mapView);
 
     }
+
 
     @Override
     protected void onStop() {
@@ -139,10 +140,8 @@ public class UserLocationActivity extends Activity implements UserLocationObject
         return com.flats.talkingflatsapp.BitmapUtils.drawableToBitmap(drawable);
     }
 
-    public void OnClickEndDay(View view) {
-        Toast.makeText(getApplicationContext(), "Окончание рабочего дня", Toast.LENGTH_LONG).show();
-        SharedPreferences preferences = getSharedPreferences("PrefStartDay", 0);
-        preferences.edit().clear().commit();
-        this.finish();
+    public void OnClickExit(View view) {
+        android.os.Process.killProcess(android.os.Process.myPid());
+
     }
 }
